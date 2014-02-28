@@ -6,7 +6,7 @@ require 'pry'
 require './lib/models/works'
 
 #
-# Could be more robust to only extract make,model,url from one position. Currently will grab from anywhere in model.
+# Could be more robust to only extract camera_make,model,url from one position. Currently will grab from anywhere in model.
 # Less sensitive to schema changes
 #
 
@@ -31,7 +31,7 @@ module Parsers
     def end_element(name)
       case name
       when 'work'
-        @works.add(@make, @model, @thumbnail) if @make && @model && @thumbnail
+        @works.add(@camera_make, @model, @thumbnail) if @camera_make && @model && @thumbnail
 
       when 'url'
         if @image_size == 'small'
@@ -39,7 +39,7 @@ module Parsers
         end
 
       when 'make'
-        @make = @text
+        @camera_make = @text
 
       when 'model'
         @model = @text

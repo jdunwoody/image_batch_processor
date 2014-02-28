@@ -3,7 +3,7 @@
 require_relative 'model'
 
 module Models
-  class Make
+  class CameraMake
 
     attr_accessor :thumbnails, :name, :models
 

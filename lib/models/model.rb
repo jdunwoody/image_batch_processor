@@ -3,12 +3,12 @@
 module Models
   class Model
 
-    attr_accessor :thumbnails, :name, :make
+    attr_accessor :thumbnails, :name, :camera_make
 
-    def initialize(name, make)
+    def initialize(name, camera_make)
       @name = name.strip
       @thumbnails = []
-      @make = make
+      @camera_make = camera_make
     end
 
     def add_thumbnail(thumbnail)

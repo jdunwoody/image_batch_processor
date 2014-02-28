@@ -1,43 +1,43 @@
 #encoding: utf-8
 
-require_relative 'make'
+require_relative 'camera_make'
 
-# normalise makes
+# normalise camera_makes
 # repository?
 
 module Models
   class Works
 
     attr_accessor :thumbnails
-    attr_reader :makes, :models
+    attr_reader :camera_makes, :models
 
     def initialize
-      @makes = Set.new
+      @camera_makes = Set.new
       @models = Set.new
       @thumbnails = []
     end
 
-    def add(make_name, model_name, thumbnail)
-      make = find_or_create_make(make_name)
+    def add(camera_make_name, model_name, thumbnail)
+      camera_make = find_or_create_camera_make(camera_make_name)
 
       add_thumbnail(thumbnail)
 
-      @models << make.add_model(model_name, thumbnail)
+      @models << camera_make.add_model(model_name, thumbnail)
     end
 
     # private
 
-    def find_or_create_make(make_name)
-      make = @makes.find do |make|
-        make.name_matches?(make_name)
+    def find_or_create_camera_make(camera_make_name)
+      camera_make = @camera_makes.find do |camera_make|
+        camera_make.name_matches?(camera_make_name)
       end
 
-      if !make
-        make = Make.new(make_name)
-        @makes << make
+      if !camera_make
+        camera_make = CameraMake.new(camera_make_name)
+        @camera_makes << camera_make
       end
 
-      make
+      camera_make
     end
 
     def add_thumbnail(thumbnail)

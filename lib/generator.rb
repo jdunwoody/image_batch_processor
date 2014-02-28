@@ -13,15 +13,15 @@ class Generator
 
   def generate(works)
     generate_models(works)
-    generate_makes(works)
+    generate_camera_makes(works)
     generate_index(works)
   end
 
   private
 
   def generate_index(works)
-    navigation_items = works.makes.map do |make|
-      { url: "make-#{URI.escape(make.name)}.html", name: make.name }
+    navigation_items = works.camera_makes.map do |camera_make|
+      { url: "camera_make-#{URI.escape(camera_make.name)}.html", name: camera_make.name }
     end
 
     # shouldn't need this
@@ -40,30 +40,30 @@ class Generator
     end
   end
 
-  def generate_makes(works)
-    works.makes.each do |make|
-      generate_make(make)
+  def generate_camera_makes(works)
+    works.camera_makes.each do |camera_make|
+      generate_camera_make(camera_make)
     end
   end
 
-  def generate_make(make)
+  def generate_camera_make(camera_make)
     navigation_items = [{ url: "index.html", name: 'index' }]
-    navigation_items += make.models.map do |model|
+    navigation_items += camera_make.models.map do |model|
       { url: "model-#{URI.escape(model.name)}.html", name: model.name }
     end
 
     # shouldn't need this
-    thumbnail_urls = make.thumbnails[0..10].map do |thumbnail|
+    thumbnail_urls = camera_make.thumbnails[0..10].map do |thumbnail|
       { url: thumbnail }
     end
 
     view = Presenter.new
-    view.title = make.name
+    view.title = camera_make.name
     view.navigation_items = navigation_items
     view.thumbnail_urls = thumbnail_urls
     template = view.render
 
-    File.open(File.join(@output_dir, "make-#{URI.escape(make.name)}.html"), 'w') do |f|
+    File.open(File.join(@output_dir, "camera_make-#{URI.escape(camera_make.name)}.html"), 'w') do |f|
       f.write(template)
     end
   end
@@ -77,7 +77,7 @@ class Generator
   def generate_model(model)
     navigation_items = [
       { url: "index.html", name: 'index' },
-      { url: "make-#{URI.escape(model.make.name)}.html", name: model.make.name },
+      { url: "camera_make-#{URI.escape(model.camera_make.name)}.html", name: model.camera_make.name },
     ]
 
     # shouldn't need this

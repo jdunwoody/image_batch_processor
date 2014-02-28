@@ -1,3 +1,4 @@
+
 require './lib/parsers/works_xml_document'
 
 module Parsers
@@ -17,7 +18,7 @@ module Parsers
 </works>
         eos
       )
-      expect(xml_document.works.makes).to be_empty
+      expect(xml_document.works.camera_makes).to be_empty
     end
 
     it 'parses //works/work/urls/url small image url as work.thumbnail' do
@@ -58,7 +59,7 @@ module Parsers
         eos
       )
 
-      expect(xml_document.works.makes.first.name).to eq('NIKON CORPORATION')
+      expect(xml_document.works.camera_makes.first.name).to eq('NIKON CORPORATION')
     end
 
     it 'parses //works/model as work.model' do
@@ -107,7 +108,7 @@ NIKON CORPORATION
       )
 
       expect(xml_document.works.thumbnails.first).to eq('Thumbnail Image URL')
-      expect(xml_document.works.makes.first.name).to eq('NIKON CORPORATION')
+      expect(xml_document.works.camera_makes.first.name).to eq('NIKON CORPORATION')
       expect(xml_document.works.models.first.name).to eq('NIKON D80')
     end
 
@@ -136,7 +137,7 @@ NIKON CORPORATION
       )
 
       expect(xml_document.works.thumbnails.first).to eq('Thumbnail Image URL')
-      expect(xml_document.works.makes.first.name).to eq('NIKON CORPORATION')
+      expect(xml_document.works.camera_makes.first.name).to eq('NIKON CORPORATION')
       expect(xml_document.works.models.first.name).to eq('NIKON D80')
     end
   end
