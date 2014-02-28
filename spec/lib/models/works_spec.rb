@@ -2,42 +2,43 @@
 
 require './lib/models/works'
 
-describe Works do
+module Models
+  describe Works do
 
-  let(:works) { Works.new }
+    let(:works) { Works.new }
 
-  describe "#find_or_create_make" do
+    describe "#find_or_create_make" do
 
-    it 'creates a new Make and adds it to list of makes' do
-      works.find_or_create_make('camera_make')
-
-      works.makes.size.should == 1
-      works.makes.first.name.should == 'camera_make'
-    end
-
-    context 'when a make already exists' do
-      it 'finds the make that matches and doesnt add it to list of makes' do
+      it 'creates a new Make and adds it to list of makes' do
         works.find_or_create_make('camera_make')
 
-        works.makes.size.should == 1
+        expect(works.makes.size).to eq(1)
+        expect(works.makes.first.name).to eq('camera_make')
+      end
 
-        works.find_or_create_make('camera_make')
+      context 'when a make already exists' do
+        it 'finds the make that matches and doesnt add it to list of makes' do
+          works.find_or_create_make('camera_make')
 
-        works.makes.size.should == 1
-        works.makes.first.name.should == 'camera_make'
+          expect(works.makes.size).to eq(1)
+
+          works.find_or_create_make('camera_make')
+
+          expect(works.makes.size).to eq(1)
+          expect(works.makes.first.name).to eq('camera_make')
+        end
       end
     end
-  end
 
-  # remove monkey patched should usage. use new rspec
-  describe '#add_thumbnail' do
+    describe '#add_thumbnail' do
 
-    it 'adds a thumbnail' do
-      works.thumbnails.should be_empty
-      works.add_thumbnail('thumb')
+      it 'adds a thumbnail' do
+        expect(works.thumbnails).to be_empty
+        works.add_thumbnail('thumb')
 
-      works.thumbnails.should == ['thumb']
+        expect(works.thumbnails).to eq(['thumb'])
+      end
+
     end
-
   end
 end

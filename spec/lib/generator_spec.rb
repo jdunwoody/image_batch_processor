@@ -6,6 +6,7 @@ describe Generator do
     let(:generator) { Generator.new }
 
     it 'makes an empty template for 0 works' do
+      pending 
       works = []
       generator.generate(works)
     end

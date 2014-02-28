@@ -10,51 +10,46 @@ require './lib/models/works'
 # Less sensitive to schema changes
 #
 
-class WorksXMLDocument < Nokogiri::XML::SAX::Document
+module Parsers
+  class WorksXMLDocument < Nokogiri::XML::SAX::Document
 
-  attr_reader :works
+    attr_reader :works
 
-  def initialize
-    @works = Works.new
-    @image_size = nil
-    @text = ''
-  end
-
-  def start_element(name, attrs = [])
-    @text = ''
-    if name == 'url'
-      @image_size = Hash[attrs]['type']
+    def initialize
+      @works = Models::Works.new
+      @image_size = nil
+      @text = ''
     end
-  end
 
-  def end_element(name)
-    case name
-    when 'work'
-      @works.add(@make, @model, @thumbnail)
-
-    when 'url'
-      if @image_size == 'small'
-        @thumbnail = @text
+    def start_element(name, attrs = [])
+      @text = ''
+      if name == 'url'
+        @image_size = Hash[attrs]['type']
       end
-
-    when 'make'
-      @make = @text
-
-    when 'model'
-      @model = @text
     end
-  end
 
-  # multi line will call this multiple times. fix this
-  def characters(string)
-    @text << string
-  end
+    def end_element(name)
+      case name
+      when 'work'
+        @works.add(@make, @model, @thumbnail) if @make && @model && @thumbnail
 
+      when 'url'
+        if @image_size == 'small'
+          @thumbnail = @text
+        end
+
+      when 'make'
+        @make = @text
+
+      when 'model'
+        @model = @text
+      end
+    end
+
+    # multi line will call this multiple times. fix this
+    def characters(string)
+      @text << string
+    end
+
+  end
 end
-
-#xml_document = WorksXMLDocument.new
-#parser = Nokogiri::XML::SAX::Parser.new(xml_document)
-
-#parser.parse(File.open(ARGV[0]))
-
-#puts xml_document.works

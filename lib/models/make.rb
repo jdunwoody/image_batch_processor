@@ -8,7 +8,7 @@ module Models
     attr_accessor :thumbnails, :name, :models
 
     def initialize(name)
-      @name = name.strip.downcase
+      @name = name.strip
       @thumbnails = []
       @models = []
     end
@@ -38,11 +38,11 @@ module Models
     end
 
     def add_thumbnail(thumbnail)
-      @thumbnails << thumbnail.strip.downcase if more_thumbnails_required?
+      @thumbnails << thumbnail.strip if more_thumbnails_required?
     end
 
     def name_matches?(name)
-      @name == name.strip.downcase
+      @name.downcase == name.strip.downcase
     end
 
     def more_thumbnails_required?
