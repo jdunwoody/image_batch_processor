@@ -1,7 +1,5 @@
 #encoding: utf-8
 
-require 'hashie'
-
 require_relative 'make'
 
 # normalise makes

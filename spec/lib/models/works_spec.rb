@@ -1,6 +1,6 @@
 #encoding: utf-8
 
-require './lib/works'
+require './lib/models/works'
 
 describe Works do
 
