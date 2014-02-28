@@ -1,6 +1,7 @@
 #encoding: utf-8
 
 require_relative 'camera_make'
+require_relative 'thumbnails'
 
 # normalise camera_makes
 # repository?
@@ -14,18 +15,18 @@ module Models
     def initialize
       @camera_makes = Set.new
       @models = Set.new
-      @thumbnails = []
+      @thumbnails = Thumbnails.new
     end
 
     def add(camera_make_name, model_name, thumbnail)
       camera_make = find_or_create_camera_make(camera_make_name)
 
-      add_thumbnail(thumbnail)
+      @thumbnails.add(thumbnail)
 
       @models << camera_make.add_model(model_name, thumbnail)
     end
 
-    # private
+    private
 
     def find_or_create_camera_make(camera_make_name)
       camera_make = @camera_makes.find do |camera_make|
@@ -38,14 +39,6 @@ module Models
       end
 
       camera_make
-    end
-
-    def add_thumbnail(thumbnail)
-      @thumbnails << thumbnail.strip if more_thumbnails_required?
-    end
-
-    def more_thumbnails_required?
-      @thumbnails.size < 10
     end
 
   end

@@ -9,16 +9,16 @@ module Models
 
     def initialize(name)
       @name = name.strip
-      @thumbnails = []
+      @thumbnails = Thumbnails.new
       @models = []
     end
 
     def add_model(model_name, thumbnail)
       model = find_or_create_model(model_name)
 
-      add_thumbnail(thumbnail)
+      @thumbnails.add(thumbnail)
 
-      model.add_thumbnail(thumbnail)
+      model.thumbnails.add(thumbnail)
       model
     end
 
@@ -39,14 +39,6 @@ module Models
       end
 
       model
-    end
-
-    def add_thumbnail(thumbnail)
-      @thumbnails << thumbnail.strip if more_thumbnails_required?
-    end
-
-    def more_thumbnails_required?
-      @thumbnails.size < 10
     end
 
   end

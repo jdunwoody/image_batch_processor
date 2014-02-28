@@ -20,6 +20,11 @@ end
 input_file = ARGV[0]
 output_dir = ARGV[1]
 
+if !input_file || !output_dir
+  puts "usage #{__FILE__} input_file output_dir"
+  exit(1)
+end
+
 batch_processor = BatchProcessor.new
 
 works = batch_processor.load(input_file)

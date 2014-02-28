@@ -1,5 +1,7 @@
 #encoding: utf-8
 
+require_relative 'thumbnails'
+
 module Models
   class Model
 
@@ -7,20 +9,12 @@ module Models
 
     def initialize(name, camera_make)
       @name = name.strip
-      @thumbnails = []
+      @thumbnails = Thumbnails.new
       @camera_make = camera_make
-    end
-
-    def add_thumbnail(thumbnail)
-      @thumbnails << thumbnail.strip if more_thumbnails_required?
     end
 
     def name_matches?(name)
       @name == name.strip
-    end
-
-    def more_thumbnails_required?
-      @thumbnails.size < 10
     end
 
   end
