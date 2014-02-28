@@ -8,7 +8,7 @@ class Parser
   end
 
   def parse
-    xml_document = WorksXMLDocument.new
+    xml_document = Parsers::WorksXMLDocument.new
     parser = Nokogiri::XML::SAX::Parser.new(xml_document)
 
     parser.parse_file(@input_file)

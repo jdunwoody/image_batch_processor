@@ -29,7 +29,7 @@ class Generator
       { url: thumbnail }
     end
 
-    view = Presenter.new
+    view = Presenters::Presenter.new
     view.title = 'Index'
     view.navigation_items = navigation_items
     view.thumbnail_urls = thumbnail_urls
@@ -57,7 +57,7 @@ class Generator
       { url: thumbnail }
     end
 
-    view = Presenter.new
+    view = Presenters::Presenter.new
     view.title = camera_make.name
     view.navigation_items = navigation_items
     view.thumbnail_urls = thumbnail_urls
@@ -85,7 +85,7 @@ class Generator
       { url: thumbnail }
     end
 
-    view = Presenter.new
+    view = Presenters::Presenter.new
     view.title = model.name
     view.navigation_items = navigation_items
     view.thumbnail_urls = thumbnail_urls
