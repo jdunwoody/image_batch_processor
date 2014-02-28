@@ -12,7 +12,7 @@ class BatchProcessor
   end
 
   def generate(output_dir, works)
-    puts Generator.new(output_dir).generate(works)
+    Generator.new(output_dir).generate(works)
   end
 
 end
@@ -25,4 +25,3 @@ batch_processor = BatchProcessor.new
 works = batch_processor.load(input_file)
 
 batch_processor.generate(output_dir, works)
-

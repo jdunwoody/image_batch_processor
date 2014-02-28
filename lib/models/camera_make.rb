@@ -22,7 +22,11 @@ module Models
       model
     end
 
-    #private
+    def name_matches?(name)
+      @name.downcase == name.strip.downcase
+    end
+
+    private
 
     def find_or_create_model(model_name)
       model = @models.find do |model|
@@ -39,10 +43,6 @@ module Models
 
     def add_thumbnail(thumbnail)
       @thumbnails << thumbnail.strip if more_thumbnails_required?
-    end
-
-    def name_matches?(name)
-      @name.downcase == name.strip.downcase
     end
 
     def more_thumbnails_required?
