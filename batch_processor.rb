@@ -17,18 +17,18 @@ class BatchProcessor
     xml_document.works
   end
 
-  def generate(works)
-    puts Generator.new.generate(works)
+  def generate(output_dir, works)
+    puts Generator.new(output_dir).generate(works)
   end
 
 end
 
 input_file = ARGV[0]
-output_file = ARGV[1]
+output_dir = ARGV[1]
 
 batch_processor = BatchProcessor.new
 
 works = batch_processor.load(input_file)
 
-batch_processor.generate(works)
+batch_processor.generate(output_dir, works)
 

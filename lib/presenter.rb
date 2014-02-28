@@ -13,9 +13,11 @@ class Presenter < Mustache
   def navigation
     navigation_items.map do |nav|
       {
-        url: nav[:url],
+        url: URI.escape(nav[:url]),
         name: nav[:name],
       }
     end
   end
+
+
 end

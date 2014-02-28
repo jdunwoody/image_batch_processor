@@ -1,9 +1,9 @@
-#!/usr/bin/env ruby
+#encoding: utf-8
 
 require 'nokogiri'
 require 'pry'
 
-require_relative 'work'
+require_relative 'works'
 
 #
 # Could be more robust to only extract make,model,url from one position. Currently will grab from anywhere in model.
@@ -15,7 +15,7 @@ class WorksXMLDocument < Nokogiri::XML::SAX::Document
   attr_reader :works
 
   def initialize
-    @works = []
+    @works = Works.new
     @image_size = nil
     @text = ''
   end
@@ -30,8 +30,7 @@ class WorksXMLDocument < Nokogiri::XML::SAX::Document
   def end_element(name)
     case name
     when 'work'
-      work = Work.new(thumbnail: @thumbnail, make: @make, model: @model)
-      @works << work
+      @works.add(@make, @model, @thumbnail)
 
     when 'url'
       if @image_size == 'small'
@@ -53,9 +52,9 @@ class WorksXMLDocument < Nokogiri::XML::SAX::Document
 
 end
 
-xml_document = WorksXMLDocument.new
-parser = Nokogiri::XML::SAX::Parser.new(xml_document)
+#xml_document = WorksXMLDocument.new
+#parser = Nokogiri::XML::SAX::Parser.new(xml_document)
 
-parser.parse(File.open(ARGV[0]))
+#parser.parse(File.open(ARGV[0]))
 
-puts xml_document.works
+#puts xml_document.works
