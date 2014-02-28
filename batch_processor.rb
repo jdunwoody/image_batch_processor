@@ -2,19 +2,13 @@
 
 #encoding: utf-8
 
-require './lib/works_xml_document'
-require './lib/work'
+require './lib/parser'
 require './lib/generator'
 
 class BatchProcessor
 
   def load(input_file)
-    xml_document = WorksXMLDocument.new
-    parser = Nokogiri::XML::SAX::Parser.new(xml_document)
-
-    parser.parse_file(input_file)
-
-    xml_document.works
+    Parser.new(input_file).parse
   end
 
   def generate(output_dir, works)

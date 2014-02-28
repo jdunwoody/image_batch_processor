@@ -3,7 +3,7 @@
 require 'nokogiri'
 require 'pry'
 
-require_relative 'works'
+require './lib/models/works'
 
 #
 # Could be more robust to only extract make,model,url from one position. Currently will grab from anywhere in model.

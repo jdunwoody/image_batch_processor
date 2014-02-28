@@ -2,13 +2,9 @@ require 'mustache'
 
 class Presenter < Mustache
 
-  self.template_file = 'lib/index.mustache'
+  self.template_file = './lib/presenters/template.mustache'
 
-  attr_accessor :navigation_items, :thumbnail_urls
-
-  def title
-    'index'
-  end
+  attr_accessor :navigation_items, :thumbnail_urls, :title
 
   def navigation
     navigation_items.map do |nav|

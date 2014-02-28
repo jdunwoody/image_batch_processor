@@ -1,9 +1,9 @@
-#encoding: utf-8
+#encoding: utf-8 ;
 
 require 'pry'
 require 'uri'
 
-require './lib/presenter'
+require './lib/presenters/presenter'
 
 class Generator
 
@@ -30,6 +30,7 @@ class Generator
     end
 
     view = Presenter.new
+    view.title = 'Index'
     view.navigation_items = navigation_items
     view.thumbnail_urls = thumbnail_urls
     template = view.render
@@ -57,6 +58,7 @@ class Generator
     end
 
     view = Presenter.new
+    view.title = make.name
     view.navigation_items = navigation_items
     view.thumbnail_urls = thumbnail_urls
     template = view.render
@@ -84,6 +86,7 @@ class Generator
     end
 
     view = Presenter.new
+    view.title = model.name
     view.navigation_items = navigation_items
     view.thumbnail_urls = thumbnail_urls
     template = view.render
