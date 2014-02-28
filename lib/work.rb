@@ -2,13 +2,15 @@
 
 # relish documentation
 
+require 'ostruct'
+
 class Work
-  include ROXML
 
-  xml_name 'Work'
+  attr_accessor :thumbnail, :make, :model
 
-  xml_reader(:thumbnail, from: 'urls/url[small]')
-  xml_reader(:make, from: 'exif/make')
-  xml_reader(:model, from: 'exif/model')
-
+  def initialize(args)
+    args.each do |k,v|
+      instance_variable_set("@#{k}", v.strip) unless v.nil?
+    end
+  end
 end
