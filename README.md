@@ -6,4 +6,4 @@ bundle install
 
 requires ruby
 
-./batch_processor works.xml output.html
+bundle exec ./batch_processor works.xml output.html

@@ -68,7 +68,7 @@ describe WorksXMLDocument do
     xml_document.works.first.model.should == 'NIKON D80'
   end
 
-  it 'parses tab content that spans multiple lines' do
+  it 'parses content that spans multiple lines' do
     parser.parse_memory(
       <<-eos
 <?xml version="1.0"?>
@@ -86,6 +86,35 @@ NIKON D80
       <make>
 NIKON CORPORATION
 </make>
+    </exif>
+  </work>
+</works>
+      eos
+    )
+
+    xml_document.works.first.thumbnail.should == 'Thumbnail Image URL'
+    xml_document.works.first.make.should == 'NIKON CORPORATION'
+    xml_document.works.first.model.should == 'NIKON D80'
+  end
+
+  it 'ignores content from other tags' do
+    parser.parse_memory(
+      <<-eos
+<?xml version="1.0"?>
+<works>
+  <work>
+    <id>31820</id>
+    <urls>
+      <url type="small"> Thumbnail Image URL </url>
+      <url type="medium"> Medium Image URL </url>
+      <url type="large"> Large Image URL </url>
+    </urls>
+    <exif>
+      <flash>0</flash>
+      <model> NIKON D80 </model>
+      <software>Adobe Photoshop CS3 Macintosh</software>
+      <make> NIKON CORPORATION </make>
+      <resolution_unit>2</resolution_unit>
     </exif>
   </work>
 </works>

@@ -1,8 +1,9 @@
-#! /usr/bin/ruby
+#!/usr/bin/env ruby
 
 require 'nokogiri'
+require 'pry'
 
-require 'work'
+require_relative 'work'
 
 #
 # Could be more robust to only extract make,model,url from one position. Currently will grab from anywhere in model.
@@ -20,14 +21,9 @@ class WorksXMLDocument < Nokogiri::XML::SAX::Document
   end
 
   def start_element(name, attrs = [])
-    case name
-    when 'url'
+    @text = ''
+    if name == 'url'
       @image_size = Hash[attrs]['type']
-      @text = ''
-    when 'make'
-      @text = ''
-    when 'model'
-      @text = ''
     end
   end
 
@@ -47,7 +43,6 @@ class WorksXMLDocument < Nokogiri::XML::SAX::Document
 
     when 'model'
       @model = @text
-
     end
   end
 

@@ -2,8 +2,6 @@
 
 # relish documentation
 
-require 'ostruct'
-
 class Work
 
   attr_accessor :thumbnail, :make, :model
@@ -12,5 +10,9 @@ class Work
     args.each do |k,v|
       instance_variable_set("@#{k}", v.strip) unless v.nil?
     end
+  end
+
+  def to_s
+    "#{make} [#{model}] #{thumbnail}"
   end
 end
