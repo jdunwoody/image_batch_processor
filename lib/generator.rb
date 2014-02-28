@@ -12,6 +12,7 @@ class Generator
   end
 
   def generate(works)
+    generate_models(works)
     generate_makes(works)
     generate_index(works)
   end
@@ -74,11 +75,11 @@ class Generator
   def generate_model(model)
     navigation_items = [
       { url: "index.html", name: 'index' },
-      { url: "model-#{URI.escape(model.make.name)}.html", name: model.make.name },
+      { url: "make-#{URI.escape(model.make.name)}.html", name: model.make.name },
     ]
 
     # shouldn't need this
-    thumbnail_urls = make.thumbnails[0..10].map do |thumbnail|
+    thumbnail_urls = model.thumbnails[0..10].map do |thumbnail|
       { url: thumbnail }
     end
 
@@ -87,7 +88,7 @@ class Generator
     view.thumbnail_urls = thumbnail_urls
     template = view.render
 
-    File.open(File.join(@output_dir, "make-#{URI.escape(make.name)}.html"), 'w') do |f|
+    File.open(File.join(@output_dir, "model-#{URI.escape(model.name)}.html"), 'w') do |f|
       f.write(template)
     end
   end

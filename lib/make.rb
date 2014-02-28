@@ -16,6 +16,9 @@ class Make
     model = find_or_create_model(model_name)
 
     add_thumbnail(thumbnail)
+
+    model.add_thumbnail(thumbnail)
+    model
   end
 
   #private
@@ -34,11 +37,15 @@ class Make
   end
 
   def add_thumbnail(thumbnail)
-    @thumbnails << thumbnail
+    @thumbnails << thumbnail.strip.downcase if more_thumbnails_required?
   end
 
   def name_matches?(name)
     @name == name.strip.downcase
+  end
+
+  def more_thumbnails_required?
+    @thumbnails.size < 10
   end
 
 end

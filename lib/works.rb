@@ -10,10 +10,11 @@ require_relative 'make'
 class Works
 
   attr_accessor :thumbnails
-  attr_reader :makes
+  attr_reader :makes, :models
 
   def initialize
     @makes = Set.new
+    @models = Set.new
     @thumbnails = []
   end
 
@@ -22,7 +23,7 @@ class Works
 
     add_thumbnail(thumbnail)
 
-    make.add_model(model_name, thumbnail)
+    @models << make.add_model(model_name, thumbnail)
   end
 
   # private
@@ -43,7 +44,6 @@ class Works
   def add_thumbnail(thumbnail)
     @thumbnails << thumbnail.strip.downcase if more_thumbnails_required?
   end
-
 
   def more_thumbnails_required?
     @thumbnails.size < 10
