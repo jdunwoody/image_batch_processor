@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <style type="text/css">
+      nav {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+    <h1>{{ title }}</h1>
+
+    <nav>
+    <!-- semantic version instead? -->
+    <ul>
+      {{#navigation}}
+      <li> <a href="{{ url }}"> {{ make }} </a> </li>
+      {{/navigation}}
+    </ul>
+    </nav>
+    </header>
+
+    {{ thumbnails }}
+  </body>
+</html>

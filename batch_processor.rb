@@ -4,6 +4,7 @@
 
 require './lib/works_xml_document'
 require './lib/work'
+require './lib/generator'
 
 class BatchProcessor
 
@@ -16,9 +17,18 @@ class BatchProcessor
     xml_document.works
   end
 
+  def generate(works)
+    puts Generator.new.generate
+  end
+
 end
 
 input_file = ARGV[0]
 output_file = ARGV[1]
 
-BatchProcessor.new.load(input_file)
+batch_processor = BatchProcessor.new
+
+works = batch_processor.load(input_file)
+
+batch_processor.generate(works)
+
