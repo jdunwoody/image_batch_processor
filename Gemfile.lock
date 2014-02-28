@@ -14,7 +14,6 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.1)
     diff-lcs (1.2.5)
-    hashie (2.0.5)
     method_source (0.8.2)
     mini_portile (0.5.2)
     mustache (0.99.5)
@@ -27,6 +26,7 @@ GEM
     pry-debugger (0.2.2)
       debugger (~> 1.3)
       pry (~> 0.9.10)
+    rake (0.9.6)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -43,9 +43,9 @@ PLATFORMS
 DEPENDENCIES
   active_support
   awesome_print
-  hashie
   mustache (~> 0.99)
   nokogiri (~> 1.6.1)
   pry
   pry-debugger
+  rake
   rspec

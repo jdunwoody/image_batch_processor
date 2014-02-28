@@ -2,50 +2,52 @@
 
 require_relative 'model'
 
-class Make
+module Models
+  class Make
 
-  attr_accessor :thumbnails, :name, :models
+    attr_accessor :thumbnails, :name, :models
 
-  def initialize(name)
-    @name = name.strip.downcase
-    @thumbnails = []
-    @models = []
-  end
-
-  def add_model(model_name, thumbnail)
-    model = find_or_create_model(model_name)
-
-    add_thumbnail(thumbnail)
-
-    model.add_thumbnail(thumbnail)
-    model
-  end
-
-  #private
-
-  def find_or_create_model(model_name)
-    model = @models.find do |model|
-      model.name_matches?(model_name)
+    def initialize(name)
+      @name = name.strip.downcase
+      @thumbnails = []
+      @models = []
     end
 
-    if !model
-      model = Model.new(model_name, self)
-      @models << model
+    def add_model(model_name, thumbnail)
+      model = find_or_create_model(model_name)
+
+      add_thumbnail(thumbnail)
+
+      model.add_thumbnail(thumbnail)
+      model
     end
 
-    model
-  end
+    #private
 
-  def add_thumbnail(thumbnail)
-    @thumbnails << thumbnail.strip.downcase if more_thumbnails_required?
-  end
+    def find_or_create_model(model_name)
+      model = @models.find do |model|
+        model.name_matches?(model_name)
+      end
 
-  def name_matches?(name)
-    @name == name.strip.downcase
-  end
+      if !model
+        model = Model.new(model_name, self)
+        @models << model
+      end
 
-  def more_thumbnails_required?
-    @thumbnails.size < 10
-  end
+      model
+    end
 
+    def add_thumbnail(thumbnail)
+      @thumbnails << thumbnail.strip.downcase if more_thumbnails_required?
+    end
+
+    def name_matches?(name)
+      @name == name.strip.downcase
+    end
+
+    def more_thumbnails_required?
+      @thumbnails.size < 10
+    end
+
+  end
 end
