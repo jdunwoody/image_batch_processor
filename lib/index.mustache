@@ -16,12 +16,16 @@
     <!-- semantic version instead? -->
     <ul>
       {{#navigation}}
-      <li> <a href="{{ url }}"> {{ make }} </a> </li>
+      <li> <a href="{{ url }}"> {{ name }} </a> </li>
       {{/navigation}}
     </ul>
     </nav>
     </header>
 
-    {{ thumbnails }}
+    <ul>
+      {{#thumbnail_urls}}
+      <li> <img src="{{ url }}" /> </li>
+      {{/thumbnail_urls}}
+    </ul>
   </body>
 </html>

@@ -1,25 +1,21 @@
 require 'mustache'
 
-class IndexPresenter < Mustache
+class MakePresenter < Mustache
 
   self.template_file = 'lib/index.mustache'
 
-  attr_accessor :navigation_makes
+  attr_accessor :navigation_items, :thumbnail_urls
 
   def title
     'index'
   end
 
   def navigation
-    navigation_makes.map do |nav|
+    navigation_items.map do |nav|
       {
         url: nav[:url],
-        make: nav[:make],
+        name: nav[:name],
       }
     end
-  end
-
-  def thumbnails
-    'thumb'
   end
 end

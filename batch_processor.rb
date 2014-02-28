@@ -18,7 +18,7 @@ class BatchProcessor
   end
 
   def generate(works)
-    puts Generator.new.generate
+    puts Generator.new.generate(works)
   end
 
 end
