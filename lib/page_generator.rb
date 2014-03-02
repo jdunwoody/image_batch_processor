@@ -8,12 +8,12 @@ require './lib/page_generators/index_generator'
 class PageGenerator
 
   def initialize(output_path, component_generators = [])
-    @template_writer = PageGenerators::TemplateWriter.new(output_path)
+    template_writer = PageGenerators::TemplateWriter.new(output_path)
 
-    @component_generators = [
-      PageGenerators::CameraModelGenerator.new(@template_writer),
-      PageGenerators::CameraMakeGenerator.new(@template_writer),
-      PageGenerators::IndexGenerator.new(@template_writer),
+    @component_generators = component_generators || [
+      PageGenerators::CameraModelGenerator.new(template_writer),
+      PageGenerators::CameraMakeGenerator.new(template_writer),
+      PageGenerators::IndexGenerator.new(template_writer),
     ]
   end
 
