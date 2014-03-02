@@ -1,8 +1,4 @@
-#encoding: utf-8
-
 require 'nokogiri'
-require 'pry'
-
 require './lib/models/works'
 
 #

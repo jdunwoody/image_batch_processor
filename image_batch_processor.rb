@@ -1,7 +1,5 @@
 #! /usr/bin/ruby
 
-#encoding: utf-8
-
 require './lib/xml_parser'
 require './lib/page_generator'
 

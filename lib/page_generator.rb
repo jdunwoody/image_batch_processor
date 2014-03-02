@@ -1,5 +1,3 @@
-#encoding: utf-8
-
 require './lib/page_generators/template_writer'
 require './lib/page_generators/camera_model_generator'
 require './lib/page_generators/camara_make_generator'

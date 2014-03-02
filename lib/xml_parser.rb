@@ -1,5 +1,3 @@
-#encoding: utf-8
-
 require './lib/xml_parsers/works_xml_document'
 
 class XMLParser

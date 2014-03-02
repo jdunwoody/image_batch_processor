@@ -1,5 +1,3 @@
-#encoding: utf-8
-
 require 'uri'
 
 require './lib/presenters/presenter_factory'
