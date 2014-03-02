@@ -12,7 +12,7 @@ Installation
 Usage
 =====
 
-	bundle exec ./batch_processor <Input XML File> <Output Directory>
+	bundle exec ./image_batch_processor.rb <Input XML File> <Output Directory>
 
 <Input XML File> must be an XML file that contains camera make, model a small thumbnail in the format specified.
 
