@@ -5,6 +5,8 @@ require_relative 'model'
 module Models
   class CameraMake
 
+    #include ActiveModel::Model
+
     attr_accessor :thumbnails, :name, :models
 
     def initialize(name)
@@ -19,11 +21,12 @@ module Models
       @thumbnails.add(thumbnail)
 
       model.thumbnails.add(thumbnail)
+
       model
     end
 
-    def name_matches?(name)
-      @name.downcase == name.strip.downcase
+    def name_matches?(other_name)
+      @name.downcase == other_name.strip.downcase
     end
 
     private

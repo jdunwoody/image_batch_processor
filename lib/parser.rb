@@ -1,6 +1,6 @@
 #encoding: utf-8
 
-require './lib/parsers/works_xml_document'
+require './lib/xml_parsers/works_xml_document'
 
 class Parser
   def initialize(input_file)
@@ -8,7 +8,7 @@ class Parser
   end
 
   def parse
-    xml_document = Parsers::WorksXMLDocument.new
+    xml_document = XMLParsers::WorksDocument.new
     parser = Nokogiri::XML::SAX::Parser.new(xml_document)
 
     parser.parse_file(@input_file)

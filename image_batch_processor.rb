@@ -3,16 +3,16 @@
 #encoding: utf-8
 
 require './lib/parser'
-require './lib/generator'
+require './lib/page_generator'
 
-class BatchProcessor
+class ImageBatchProcessor
 
   def load(input_file)
     Parser.new(input_file).parse
   end
 
   def generate(output_dir, works)
-    Generator.new(output_dir).generate(works)
+    PageGenerator.new(output_dir).generate(works)
   end
 
 end
@@ -25,7 +25,7 @@ if !input_file || !output_dir
   exit(1)
 end
 
-batch_processor = BatchProcessor.new
+batch_processor = ImageBatchProcessor.new
 
 works = batch_processor.load(input_file)
 

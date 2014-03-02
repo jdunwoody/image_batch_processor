@@ -7,11 +7,11 @@ require './lib/models/works'
 
 #
 # Could be more robust to only extract camera_make,model,url from one position. Currently will grab from anywhere in model.
-# Less sensitive to schema changes
+# This solution is less sensitive to schema changes
 #
 
-module Parsers
-  class WorksXMLDocument < Nokogiri::XML::SAX::Document
+module XMLParsers
+  class WorksDocument < Nokogiri::XML::SAX::Document
 
     attr_reader :works
 
@@ -46,7 +46,6 @@ module Parsers
       end
     end
 
-    # multi line will call this multiple times. fix this
     def characters(string)
       @text << string
     end

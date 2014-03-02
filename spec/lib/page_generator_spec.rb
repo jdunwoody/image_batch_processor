@@ -1,9 +1,9 @@
-require './lib/generator'
+require './lib/page_generator'
 
-describe Generator do
+describe PageGenerator do
   describe '#generate' do
 
-    let(:generator) { Generator.new }
+    let(:generator) { PageGenerator.new }
 
     it 'makes an empty template for 0 works' do
       pending 

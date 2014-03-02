@@ -1,7 +1,7 @@
 
 require './lib/parsers/works_xml_document'
 
-module Parsers
+module XMLParsers
   describe WorksXMLDocument do
 
     let(:xml_document) { WorksXMLDocument.new }
