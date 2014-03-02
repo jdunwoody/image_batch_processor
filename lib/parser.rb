@@ -2,7 +2,7 @@
 
 require './lib/xml_parsers/works_xml_document'
 
-class Parser
+class XMLParser
   def initialize(input_file)
     @input_file = input_file
   end

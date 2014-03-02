@@ -1,10 +1,10 @@
 
-require './lib/parsers/works_xml_document'
+require './lib/xml_parsers/works_xml_document'
 
 module XMLParsers
-  describe WorksXMLDocument do
+  describe WorksDocument do
 
-    let(:xml_document) { WorksXMLDocument.new }
+    let(:xml_document) { WorksDocument.new }
     let(:parser) { Nokogiri::XML::SAX::Parser.new(xml_document) }
 
     it 'does not create a work when all fields are missing' do
