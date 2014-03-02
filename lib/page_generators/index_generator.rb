@@ -10,12 +10,12 @@ module PageGenerators
     end
 
     def generate(works)
-      @template_writer.write(generate_index, "index.html")
+      @template_writer.write(generate_index(works), "index.html")
     end
 
     private
 
-    def generate_index
+    def generate_index(works)
       view = @presenter_factory.make_presenter('Index',
                                                generate_navigation_items(works.camera_makes),
                                                generate_thumbnail_items(works.thumbnails))
