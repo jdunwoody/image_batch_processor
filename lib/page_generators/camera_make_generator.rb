@@ -19,11 +19,9 @@ module PageGenerators
     private
 
     def generate_camera_make(camera_make)
-      view = @presenter_factory.make_presenter
-
-      view.title = camera_make.name
-      view.navigation_items = generate_navigation_items(camera_make)
-      view.thumbnail_urls = generate_thumbnail_urls(camera_make)
+      view = @presenter_factory.make_presenter(camera_make.name,
+                                               generate_navigation_items(camera_make),
+                                               generate_thumbnail_urls(camera_make.thumbnails))
 
       view.render
     end
@@ -37,9 +35,8 @@ module PageGenerators
       navigation_items
     end
 
-    def generate_thumbnail_urls(camera_make)
-      # shouldn't need this
-      camera_make.thumbnails.urls.map do |thumbnail|
+    def generate_thumbnail_urls(thumbnails)
+      thumbnails.urls.map do |thumbnail|
         { url: thumbnail }
       end
     end

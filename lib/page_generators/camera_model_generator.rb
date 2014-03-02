@@ -20,11 +20,9 @@ module PageGenerators
     private
 
     def generate_model(model)
-      view = @presenter_factory.make_presenter
-
-      view.title = model.name
-      view.navigation_items = generate_navigation_items(model)
-      view.thumbnail_urls = generate_thumbnail_urls(model)
+      view = @presenter_factory.make_presenter(model.name,
+                                               generate_navigation_items(model),
+                                               generate_thumbnail_urls(model))
 
       view.render
     end
