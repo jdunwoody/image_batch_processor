@@ -1,5 +1,3 @@
-require 'uri'
-
 require_relative 'presenter_factory'
 require_relative 'url_helper'
 

@@ -1,4 +1,3 @@
-require 'cgi'
 require './lib/parse/text_transformer'
 
 module Render

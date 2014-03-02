@@ -2,8 +2,8 @@ require 'nokogiri'
 require './lib/models/works'
 
 #
-# Could be more robust to only extract camera_make,model,url from one position. Currently will grab from anywhere in model.
-# This solution is less sensitive to schema changes
+# Could be more robust to only extract camera_make,model,url the anticipated path. Currently will match tag contect from anywhere in document.
+# This solution however is less sensitive to schema changes
 #
 
 module Parse

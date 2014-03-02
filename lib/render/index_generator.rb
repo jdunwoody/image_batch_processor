@@ -1,4 +1,3 @@
-require 'uri'
 require_relative 'presenter'
 
 module Render
