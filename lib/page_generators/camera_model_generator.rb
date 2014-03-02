@@ -13,7 +13,8 @@ module PageGenerators
 
     def generate(works)
       works.models.each do |model|
-        generate_model(model)
+      @template_writer.write(generate_model(model),
+                             "model-#{URI.escape(model.name)}.html")
       end
     end
 
@@ -36,7 +37,6 @@ module PageGenerators
       view.thumbnail_urls = thumbnail_urls
       template = view.render
 
-      @template_writer.write(template, "model-#{URI.escape(model.name)}.html")
     end
 
   end

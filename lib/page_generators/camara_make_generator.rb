@@ -13,30 +13,36 @@ module PageGenerators
 
     def generate(works)
       works.camera_makes.each do |camera_make|
-        generate_camera_make(camera_make)
+        @template_writer.write(generate_camera_make(camera_make),
+                               "camera_make-#{URI.escape(camera_make.name)}.html")
       end
     end
 
     private
 
     def generate_camera_make(camera_make)
+      view = Presenters::Presenter.new
+
+      view.title = camera_make.name
+      view.navigation_items = generate_navigation_items(camera_make)
+      view.thumbnail_urls = generate_thumbnail_urls(camera_make)
+
+      view.render
+    end
+
+    def generate_navigation_items(camera_make)
       navigation_items = [{ url: "index.html", name: 'index' }]
       navigation_items += camera_make.models.map do |model|
         { url: "model-#{URI.escape(model.name)}.html", name: model.name }
       end
+      navigation_items
+    end
 
+    def generate_thumbnail_urls(camera_make)
       # shouldn't need this
       thumbnail_urls = camera_make.thumbnails.urls.map do |thumbnail|
         { url: thumbnail }
       end
-
-      view = Presenters::Presenter.new
-      view.title = camera_make.name
-      view.navigation_items = navigation_items
-      view.thumbnail_urls = thumbnail_urls
-      template = view.render
-
-      @template_writer.write(template, "camera_make-#{URI.escape(camera_make.name)}.html")
     end
 
   end
