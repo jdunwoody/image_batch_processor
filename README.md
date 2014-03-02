@@ -12,10 +12,25 @@ Installation
 Usage
 =====
 
-	bundle exec ./image_batch_processor.rb <Input XML File> <Output Directory>
+	bundle exec ./image_batch_processor.rb input_xml_file output_directory
 
-<Input XML File> must be an XML file that contains camera make, model a small thumbnail in the format specified.
+input_xml_file must be an XML file that contains camera make, model a small thumbnail in the following format:
+
+	<?xml version="1.0"?>
+	<works>
+	  <work>
+	    <urls>
+	      <url type="small"> PATH TO URL</url>
+	    </urls>
+	    <exif>
+	      <model> MODEL </model>
+	      <make> MAKE</make>
+	    </exif>
+	  </work>
+	</works>
 
 The output directory is created if it doesn't exist.
 
-	open <Output Directory>/index.html
+An index.html file is created in the root of output_dir:
+
+	open output_directory/index.html
