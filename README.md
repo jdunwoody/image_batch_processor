@@ -7,6 +7,7 @@ Tested against ruby
 Installation
 ============
 
+	Clone this repo
 	bundle install
 
 Usage
