@@ -1,22 +1,23 @@
 require './lib/page_generator'
+require './lib/models/works'
 
 describe PageGenerator do
   describe '#generate' do
 
-    it 'makes an empty template for 0 works' do
+    it 'asks each component generator to generate its pages' do
       component_generators = [
-        double(PageGenerators::CameraMakeGenerator, generate: 'OUTPUT'),
-        double(PageGenerators::IndexGenerator, generate: 'OUTPUT'),
+        double(PageGenerators::CameraMakeGenerator, generate: nil),
+        double(PageGenerators::IndexGenerator, generate: nil),
       ]
+      works = double(Models::Works)
 
       generator = PageGenerator.new('OUTPUT PATH', component_generators)
 
       component_generators.each do |component_generators|
-        expect(component_generators).to receive(:generate).once.with(nil)
+        expect(component_generators).to receive(:generate).once.with(works)
       end
 
-      generator.generate(nil)
-
+      generator.generate(works)
     end
 
   end
