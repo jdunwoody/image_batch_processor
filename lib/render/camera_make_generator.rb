@@ -1,7 +1,7 @@
-require './lib/presenters/presenter'
-require './lib/presenters/url_helper'
+require './lib/render/presenter'
+require './lib/render/url_helper'
 
-module PageGenerators
+module Render
   class CameraMakeGenerator
 
     def initialize(template_writer, presenter_factory = PresenterFactory.new)
@@ -12,7 +12,7 @@ module PageGenerators
     def generate(works)
       works.camera_makes.each do |camera_make|
         @template_writer.write(generate_camera_make(camera_make),
-                               Presenters::UrlHelper.camera_make_url(camera_make))
+                               UrlHelper.camera_make_url(camera_make))
       end
     end
 
@@ -27,9 +27,9 @@ module PageGenerators
     end
 
     def generate_navigation_items(camera_make)
-      navigation_items = [{ url: Presenters::UrlHelper.index_url, name: 'index' }]
+      navigation_items = [{ url: UrlHelper.index_url, name: 'index' }]
       navigation_items += camera_make.models.map do |model|
-        { url: Presenters::UrlHelper.camera_model_url(model), name: model.name }
+        { url: UrlHelper.camera_model_url(model), name: model.name }
       end
 
       navigation_items

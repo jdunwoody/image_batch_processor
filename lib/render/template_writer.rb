@@ -1,5 +1,5 @@
 
-module PageGenerators
+module Render
   class TemplateWriter
 
     def initialize(output_dir)

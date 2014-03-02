@@ -1,15 +1,15 @@
-require './lib/page_generators/template_writer'
-require './lib/page_generators/camera_model_generator'
-require './lib/page_generators/camera_make_generator'
-require './lib/page_generators/index_generator'
+require './lib/render/template_writer'
+require './lib/render/camera_model_generator'
+require './lib/render/camera_make_generator'
+require './lib/render/index_generator'
 
 class PageGenerator
 
   def initialize(template_writer, component_generators = nil)
     @component_generators = component_generators || [
-      PageGenerators::CameraModelGenerator.new(template_writer),
-      PageGenerators::CameraMakeGenerator.new(template_writer),
-      PageGenerators::IndexGenerator.new(template_writer),
+      Render::CameraModelGenerator.new(template_writer),
+      Render::CameraMakeGenerator.new(template_writer),
+      Render::IndexGenerator.new(template_writer),
     ]
   end
 

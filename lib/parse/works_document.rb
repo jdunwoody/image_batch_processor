@@ -6,7 +6,7 @@ require './lib/models/works'
 # This solution is less sensitive to schema changes
 #
 
-module XMLParsers
+module Parse
   class WorksDocument < Nokogiri::XML::SAX::Document
 
     attr_reader :works

@@ -1,7 +1,6 @@
-require './lib/presenters/presenter_factory'
+require './lib/render/presenter_factory'
 
-
-module PageGenerators
+module Render
   describe PresenterFactory do
     describe '#make_presenter' do
 

@@ -4,7 +4,7 @@ require 'erb'
 
 #http://stackoverflow.com/questions/2824126/whats-the-difference-between-uri-escape-and-cgi-escape
 
-module Presenters
+module Render
   class UrlHelper
 
     def self.camera_make_url(camera_make)

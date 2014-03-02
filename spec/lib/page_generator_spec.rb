@@ -6,11 +6,11 @@ describe PageGenerator do
 
     it 'asks each component generator to generate its pages' do
       component_generators = [
-        double(PageGenerators::CameraMakeGenerator, generate: nil),
-        double(PageGenerators::IndexGenerator, generate: nil),
+        double(Render::CameraMakeGenerator, generate: nil),
+        double(Render::IndexGenerator, generate: nil),
       ]
       works = double(Models::Works)
-      template_writer = double(PageGenerators::TemplateWriter)
+      template_writer = double(Render::TemplateWriter)
 
       generator = PageGenerator.new(template_writer, component_generators)
 

@@ -1,8 +1,9 @@
 require 'uri'
 
-require './lib/presenters/presenter_factory'
+require_relative 'presenter_factory'
+require_relative 'url_helper'
 
-module PageGenerators
+module Render
   class CameraModelGenerator
 
     def initialize(template_writer, presenter_factory = PresenterFactory.new)
@@ -13,7 +14,7 @@ module PageGenerators
     def generate(works)
       works.models.each do |model|
         @template_writer.write(generate_model(model),
-                               Presenters::UrlHelper.camera_model_url(model))
+                               UrlHelper.camera_model_url(model))
       end
     end
 
@@ -29,8 +30,8 @@ module PageGenerators
 
     def generate_navigation_items(model)
       [
-        { url: Presenters::UrlHelper.index_url, name: 'index' },
-        { url: Presenters::UrlHelper.camera_make_url(model.camera_make), name: model.camera_make.name },
+        { url: UrlHelper.index_url, name: 'index' },
+        { url: UrlHelper.camera_make_url(model.camera_make), name: model.camera_make.name },
       ]
     end
 

@@ -1,7 +1,7 @@
 require 'uri'
-require './lib/presenters/presenter'
+require_relative 'presenter'
 
-module PageGenerators
+module Render
   class IndexGenerator
 
     def initialize(template_writer, presenter_factory = PresenterFactory.new)
@@ -10,7 +10,7 @@ module PageGenerators
     end
 
     def generate(works)
-      @template_writer.write(generate_index(works), Presenters::UrlHelper.index_url)
+      @template_writer.write(generate_index(works), UrlHelper.index_url)
     end
 
     private
@@ -30,7 +30,7 @@ module PageGenerators
 
     def generate_navigation_items(camera_makes)
       camera_makes.map do |camera_make|
-        { url: Presenters::UrlHelper.camera_make_url(camera_make), name: camera_make.name }
+        { url: UrlHelper.camera_make_url(camera_make), name: camera_make.name }
       end
     end
 

@@ -1,7 +1,7 @@
 
-require './lib/xml_parsers/works_xml_document'
+require './lib/parse/works_document'
 
-module XMLParsers
+module Parse
   describe WorksDocument do
 
     let(:xml_document) { WorksDocument.new }

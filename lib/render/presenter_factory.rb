@@ -1,10 +1,10 @@
-require './lib/presenters/presenter'
+require_relative 'presenter'
 
-module PageGenerators
+module Render
   class PresenterFactory
 
     def make_presenter(title, navigation_items, thumbnail_urls)
-      view = Presenters::Presenter.new
+      view = Presenter.new
 
       view.title = title
       view.navigation_items = navigation_items

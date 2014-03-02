@@ -1,9 +1,9 @@
 require 'mustache'
 
-module Presenters
+module Render
   class Presenter < Mustache
 
-    self.template_file = './lib/presenters/page.mustache'
+    self.template_file = './lib/render/page.mustache'
 
     attr_accessor :navigation_items, :thumbnail_urls, :title
 

@@ -1,4 +1,4 @@
-module XMLParsers
+module Parse
   class ParserFactory
 
     def make(xml_document)
