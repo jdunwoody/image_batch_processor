@@ -2,7 +2,7 @@
 
 require './lib/xml_parser'
 require './lib/page_generator'
-
+require 'pry'
 class ImageBatchProcessor
 
   def load(input_file)

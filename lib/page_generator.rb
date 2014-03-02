@@ -5,7 +5,7 @@ require './lib/page_generators/index_generator'
 
 class PageGenerator
 
-  def initialize(output_path, component_generators = [])
+  def initialize(output_path, component_generators = nil)
     template_writer = PageGenerators::TemplateWriter.new(output_path)
 
     @component_generators = component_generators || [

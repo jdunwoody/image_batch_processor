@@ -1,8 +1,10 @@
+
 module PageGenerators
   class TemplateWriter
 
     def initialize(output_dir)
       @output_dir = output_dir
+      FileUtils.mkdir_p(output_dir)
     end
 
     def write(template, name)
