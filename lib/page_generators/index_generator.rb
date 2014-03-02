@@ -10,7 +10,7 @@ module PageGenerators
     end
 
     def generate(works)
-      @template_writer.write(generate_index(works), "index.html")
+      @template_writer.write(generate_index(works), Presenters::UrlHelper.index_url)
     end
 
     private
@@ -30,7 +30,7 @@ module PageGenerators
 
     def generate_navigation_items(camera_makes)
       camera_makes.map do |camera_make|
-        { url: "camera_make-#{URI.escape(camera_make.name)}.html", name: camera_make.name }
+        { url: Presenters::UrlHelper.camera_make_url(camera_make), name: camera_make.name }
       end
     end
 

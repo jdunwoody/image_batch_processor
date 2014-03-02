@@ -1,5 +1,5 @@
-require 'uri'
 require './lib/presenters/presenter'
+require './lib/presenters/url_helper'
 
 module PageGenerators
   class CameraMakeGenerator
@@ -12,7 +12,7 @@ module PageGenerators
     def generate(works)
       works.camera_makes.each do |camera_make|
         @template_writer.write(generate_camera_make(camera_make),
-                               "camera_make-#{URI.escape(camera_make.name)}.html")
+                               Presenters::UrlHelper.camera_make_url(camera_make))
       end
     end
 
@@ -27,9 +27,9 @@ module PageGenerators
     end
 
     def generate_navigation_items(camera_make)
-      navigation_items = [{ url: "index.html", name: 'index' }]
+      navigation_items = [{ url: Presenters::UrlHelper.index_url, name: 'index' }]
       navigation_items += camera_make.models.map do |model|
-        { url: "model-#{URI.escape(model.name)}.html", name: model.name }
+        { url: Presenters::UrlHelper.camera_model_url(model), name: model.name }
       end
 
       navigation_items

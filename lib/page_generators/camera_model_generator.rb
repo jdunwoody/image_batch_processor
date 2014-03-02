@@ -13,7 +13,7 @@ module PageGenerators
     def generate(works)
       works.models.each do |model|
         @template_writer.write(generate_model(model),
-                               "model-#{URI.escape(model.name)}.html")
+                               Presenters::UrlHelper.camera_model_url(model))
       end
     end
 
@@ -29,8 +29,8 @@ module PageGenerators
 
     def generate_navigation_items(model)
       [
-        { url: "index.html", name: 'index' },
-        { url: "camera_make-#{URI.escape(model.camera_make.name)}.html", name: model.camera_make.name },
+        { url: Presenters::UrlHelper.index_url, name: 'index' },
+        { url: Presenters::UrlHelper.camera_make_url(model.camera_make), name: model.camera_make.name },
       ]
     end
 
