@@ -10,8 +10,9 @@ describe PageGenerator do
         double(PageGenerators::IndexGenerator, generate: nil),
       ]
       works = double(Models::Works)
+      template_writer = double(PageGenerators::TemplateWriter)
 
-      generator = PageGenerator.new('OUTPUT PATH', component_generators)
+      generator = PageGenerator.new(template_writer, component_generators)
 
       component_generators.each do |component_generators|
         expect(component_generators).to receive(:generate).once.with(works)
