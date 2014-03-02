@@ -1,4 +1,4 @@
-require_relative 'model'
+require_relative 'camera_model'
 
 module Models
   class CameraMake
@@ -35,7 +35,7 @@ module Models
       end
 
       if !model
-        model = Model.new(model_name, self)
+        model = CameraModel.new(model_name, self)
         @models << model
       end
 

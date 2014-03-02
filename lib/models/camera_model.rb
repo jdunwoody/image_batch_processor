@@ -1,7 +1,7 @@
 require_relative 'thumbnails'
 
 module Models
-  class Model
+  class CameraModel
 
     attr_accessor :thumbnails, :name, :camera_make
 
@@ -12,7 +12,7 @@ module Models
     end
 
     def name_matches?(name)
-      @name == name.strip
+      @name.downcase == name.strip.downcase
     end
 
   end

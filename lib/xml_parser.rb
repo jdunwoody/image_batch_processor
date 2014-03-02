@@ -1,8 +1,9 @@
 require './lib/xml_parsers/works_xml_document'
+require './lib/xml_parsers/parser_factory'
 
 class XMLParser
 
-  def initialize(input_file, parser_factory)
+  def initialize(input_file, parser_factory = XMLParsers::ParserFactory.new)
     @input_file = input_file
     @parser_factory = parser_factory
   end

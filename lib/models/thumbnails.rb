@@ -1,5 +1,3 @@
-require_relative 'model'
-
 module Models
   class Thumbnails
 
