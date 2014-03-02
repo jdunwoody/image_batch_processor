@@ -26,9 +26,6 @@ module Models
           expect(works.camera_makes.first.name).to eq('camera_make')
         end
       end
-    end
-
-    describe '#add_thumbnail' do
 
       it 'adds a thumbnail' do
         expect(works.thumbnails.urls).to be_empty
