@@ -11,7 +11,7 @@ class ImageBatchProcessor
   end
 
   def generate(output_dir, works)
-    template_writer = PageGenerators::TemplateWriter.new(output_dir)
+    template_writer = Render::TemplateWriter.new(output_dir)
 
     PageGenerator.new(template_writer).generate(works)
   end
