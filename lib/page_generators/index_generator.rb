@@ -23,14 +23,13 @@ module PageGenerators
     end
 
     def generate_thumbnail_items(thumbnails)
-      # shouldn't need this
       thumbnail_urls = thumbnails.urls.map do |thumbnail|
         { url: thumbnail }
       end
     end
 
     def generate_navigation_items(camera_makes)
-      navigation_items = camera_makes.map do |camera_make|
+      camera_makes.map do |camera_make|
         { url: "camera_make-#{URI.escape(camera_make.name)}.html", name: camera_make.name }
       end
     end
