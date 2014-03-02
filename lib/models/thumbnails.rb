@@ -8,12 +8,12 @@ module Models
     end
 
     def add(thumbnail)
-      @urls << thumbnail.strip if more_thumbnails_required?
+      @urls << thumbnail.strip if more_thumbnails_accepted?
     end
 
     private
 
-    def more_thumbnails_required?
+    def more_thumbnails_accepted?
       @urls.size < 10
     end
 

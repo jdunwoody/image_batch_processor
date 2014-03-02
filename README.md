@@ -1,4 +1,7 @@
 
+Tested against ruby 
+2.0.0-p195
+
 Installation
 ============
 

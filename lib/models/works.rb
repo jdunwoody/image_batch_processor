@@ -1,9 +1,6 @@
 require_relative 'camera_make'
 require_relative 'thumbnails'
 
-# normalise camera_makes
-# repository?
-
 module Models
   class Works
 

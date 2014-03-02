@@ -3,8 +3,6 @@ require_relative 'camera_model'
 module Models
   class CameraMake
 
-    #include ActiveModel::Model
-
     attr_accessor :thumbnails, :name, :models
 
     def initialize(name)

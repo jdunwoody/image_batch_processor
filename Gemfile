@@ -2,8 +2,7 @@ source "http://rubygems.org"
 
 gem 'nokogiri', '~>1.6.1'
 gem 'mustache', '~>0.99'
-#gem 'activemodel'
-
+gem 'rake',     '~>0.9.6'
 
 group :development, :test do
   gem 'rspec'
