@@ -2,7 +2,7 @@
 
 #encoding: utf-8
 
-require './lib/parser'
+require './lib/xml_parser'
 require './lib/page_generator'
 
 class ImageBatchProcessor

@@ -7,8 +7,9 @@ require './lib/presenters/presenter'
 module PageGenerators
   class CameraMakeGenerator
 
-    def initialize(template_writer)
+    def initialize(template_writer, presenter_factory = PresenterFactory.new)
       @template_writer = template_writer
+      @presenter_factory = presenter_factory
     end
 
     def generate(works)
@@ -21,7 +22,7 @@ module PageGenerators
     private
 
     def generate_camera_make(camera_make)
-      view = Presenters::Presenter.new
+      view = @presenter_factory.make_presenter
 
       view.title = camera_make.name
       view.navigation_items = generate_navigation_items(camera_make)
@@ -35,12 +36,13 @@ module PageGenerators
       navigation_items += camera_make.models.map do |model|
         { url: "model-#{URI.escape(model.name)}.html", name: model.name }
       end
+
       navigation_items
     end
 
     def generate_thumbnail_urls(camera_make)
       # shouldn't need this
-      thumbnail_urls = camera_make.thumbnails.urls.map do |thumbnail|
+      camera_make.thumbnails.urls.map do |thumbnail|
         { url: thumbnail }
       end
     end
