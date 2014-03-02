@@ -24,7 +24,7 @@ module Render
         title = 'Camera Make'
         navigation_items = [
           { url: 'index.html', name: 'index' },
-          { url: 'model-Camera%20Model.html', name: 'Camera Model' }
+          { url: 'model-Camera-Model.html', name: 'Camera Model' }
         ]
         thumbnails = [ url: 'Thumb' ]
 
