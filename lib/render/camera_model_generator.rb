@@ -14,7 +14,7 @@ module Render
     def generate(works)
       works.models.each do |model|
         @template_writer.write(generate_model(model),
-                               UrlHelper.camera_model_url(model))
+                               UrlHelper.camera_model_url(model.name))
       end
     end
 
@@ -31,7 +31,7 @@ module Render
     def generate_navigation_items(model)
       [
         { url: UrlHelper.index_url, name: 'index' },
-        { url: UrlHelper.camera_make_url(model.camera_make), name: model.camera_make.name },
+        { url: UrlHelper.camera_make_url(model.camera_make.name), name: model.camera_make.name },
       ]
     end
 

@@ -30,7 +30,7 @@ module Render
 
     def generate_navigation_items(camera_makes)
       camera_makes.map do |camera_make|
-        { url: UrlHelper.camera_make_url(camera_make), name: camera_make.name }
+        { url: UrlHelper.camera_make_url(camera_make.name), name: camera_make.name }
       end
     end
 
