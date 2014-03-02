@@ -17,9 +17,9 @@ module Models
     end
 
     def add(camera_make_name, model_name, thumbnail)
-      camera_make = find_or_create_camera_make(camera_make_name)
-
       @thumbnails.add(thumbnail)
+
+      camera_make = find_or_create_camera_make(camera_make_name)
 
       @models << camera_make.add_model(model_name, thumbnail)
     end
