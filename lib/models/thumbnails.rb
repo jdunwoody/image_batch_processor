@@ -11,6 +11,10 @@ module Models
       @urls << thumbnail.strip if more_thumbnails_accepted?
     end
 
+    def to_s
+      urls.count.to_s
+    end
+
     private
 
     def more_thumbnails_accepted?

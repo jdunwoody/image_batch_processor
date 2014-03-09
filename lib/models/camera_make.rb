@@ -25,6 +25,14 @@ module Models
       @name.downcase == other_name.strip.downcase
     end
 
+    def to_s
+      str = "#{name}, Thumbnails: #{thumbnails}\n"
+
+      str << models.map {|model| "\tCamera Model: #{model}" }.join(",\n")
+
+      str
+    end
+
     private
 
     def find_or_create_model(model_name)

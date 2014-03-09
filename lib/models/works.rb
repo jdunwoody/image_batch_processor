@@ -21,6 +21,12 @@ module Models
       @models << camera_make.add_model(model_name, thumbnail)
     end
 
+    def to_s
+      camera_makes.map do |camera_make|
+        "Camera Make: #{camera_make}"
+      end
+    end
+
     private
 
     def find_or_create_camera_make(camera_make_name)

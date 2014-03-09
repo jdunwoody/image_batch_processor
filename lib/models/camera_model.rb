@@ -15,5 +15,9 @@ module Models
       @name.downcase == name.strip.downcase
     end
 
+    def to_s
+      "#{name} Thumbnails: #{thumbnails}"
+    end
+
   end
 end
