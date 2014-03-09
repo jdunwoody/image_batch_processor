@@ -35,3 +35,13 @@ The output directory is created if it doesn't exist.
 An index.html file is created in the root of output_dir:
 
 	open output_directory/index.html
+
+
+Performance
+===========
+
+30MB file (generated from data_file_generator.rb) took the following time to parse on macbook pro (2011)
+
+	bundle exec ./image_batch_processor.rb very-large.xml output  12.45s user 1.25s system 78% cpu 17.365 total
+
+

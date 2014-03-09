@@ -1,4 +1,5 @@
 *.swp
 output/
 sample/
+/very-large.xml
 

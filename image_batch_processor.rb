@@ -32,3 +32,5 @@ works = batch_processor.load(input_file)
 
 batch_processor.generate(output_dir, works)
 puts works.to_s
+
+
